@@ -23,8 +23,13 @@ int main() {
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			
-			
-
+			bool isTriangle = triangleInequalityTheorem(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			if (isTriangle) {
+				printf("It is a legitimate triangle!\n\n");
+				calculateIntAnglesOfTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			}
+			else
+				printf("Not a legitimate triangle!\n\n");
 
 			break;
 		case 0:
