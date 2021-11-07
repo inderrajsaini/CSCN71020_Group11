@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
-
 #include "triangleSolver.h"
+
 
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
@@ -21,4 +21,13 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	}
 
 	return result;
+}
+
+bool triangleInequalityTheorem(int s1, int s2, int s3)
+{
+	bool isTriangle = false;
+	if ((s1 + s2 > s3) && (s2 + s3 > s1) && (s1 + s3 > s2))
+		isTriangle = true;
+	return isTriangle;
+
 }
