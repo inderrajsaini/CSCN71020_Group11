@@ -61,7 +61,24 @@ bool analyzeFourPoints(int x1, int y1, int x2, int y2, int x3, int y3, int x4, i
         else
             return false;
     }
+    else if (unique == 3) //might be a rectangle
+    {
+        int sqLength, sqBreadth; int sqDiagonal;
+        setLengthBreadthAndDiagonal(uniqSqDist[0], uniqSqDist[1], uniqSqDist[2], &sqLength, &sqBreadth, &sqDiagonal);
+        if (sqLength + sqBreadth == sqDiagonal) { //using pythagoras theorem to check if sides makes a 90 degree angle
+            int length = sqrt(sqLength);
+            int breadth = sqrt(sqBreadth);
+            *perimeter = 2 * (length + breadth);
+            *area = length * breadth;
+            return true;
+        }
+        else
+            return false;
+    }
+    return false;
+
 }
+
 
     //returns squared distance between 2 cartesian points
     int findDistBw2Pts(int x1, int y1, int x2, int y2)
@@ -73,4 +90,25 @@ bool analyzeFourPoints(int x1, int y1, int x2, int y2, int x3, int y3, int x4, i
     bool isSquare(int sqOfDiagonal, int sqOfSide)
     {
         return sqOfDiagonal == 2 * sqOfSide;
+    }
+    //sets the largest of 3 lengths to diagonal, and other two as length and breadth
+    void setLengthBreadthAndDiagonal(int a, int b, int c, int* length, int* breadth, int* diagonal) {
+        if (a > b && a > c)
+        {
+            *diagonal = a;
+            *length = b;
+            *breadth = c;
+        }
+        else if (b > a && b > c)
+        {
+            *diagonal = b;
+            *length = a;
+            *breadth = c;
+        }
+        else
+        {
+            *diagonal = c;
+            *length = b;
+            *breadth = a;
+        }
     }
