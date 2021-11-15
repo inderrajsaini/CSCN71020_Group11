@@ -3,8 +3,9 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "rectangleSolver.h"
+int* getFourPoints(int* cartesianPoints);
 
-int side = 0;
 
 int main() {
 	bool continueProgram = true;
@@ -19,7 +20,7 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
+			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			
@@ -31,6 +32,23 @@ int main() {
 			else
 				printf("Not a legitimate triangle!\n\n");
 
+			break;
+		case 2:
+			printf_s("\nRectangle selected.\n");
+
+			int points[8] = { 0,0,0,0,0,0,0,0};
+			int perimeter, area;
+			int* cartesianPoints = getFourPoints(points);
+
+			bool isRectangle = analyzeFourPoints(cartesianPoints[0], cartesianPoints[1], cartesianPoints[2], cartesianPoints[3], cartesianPoints[4], cartesianPoints[5], cartesianPoints[6], cartesianPoints[7], &perimeter, &area);
+			if (isRectangle)
+			{
+				printf("It is a rectangle!\n\n");
+				printf("Perimeter = %d\nArea = %d\n", perimeter, area);
+			}
+			else
+				printf("NOT a rectangle!\n\n");
+			
 			break;
 		case 0:
 			continueProgram = false;
@@ -53,6 +71,7 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
@@ -70,4 +89,20 @@ int* getTriangleSides(int* triangleSides) {
 		scanf_s("%d", &triangleSides[i]);
 	}
 	return triangleSides;
+}
+
+//saves the 4 cartesian points in an array of 8 integers
+int* getFourPoints(int* cartesianPoints) {
+	printf_s("Enter the four points of the rectangle: \n");
+	int index = 0;
+	for (int i = 1; i < 5; i++)
+	{
+		printf_s("Enter the x coordinate of point %d: ", i);
+		scanf_s("%d", &cartesianPoints[index]);
+		index++;
+		printf_s("Enter the y coordinate of point %d: ", i);
+		scanf_s("%d", &cartesianPoints[index]);
+		index++;
+	}
+	return cartesianPoints;
 }
