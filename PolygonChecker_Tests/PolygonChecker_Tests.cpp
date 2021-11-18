@@ -10,12 +10,12 @@ namespace PolygonCheckerTests
 	TEST_CLASS(PolygonCheckerTests)
 	{
 	public:
-		
 		TEST_METHOD(Test1_analyzeTriangle_One_OneandnegativeOne_Not_a_triangle)
 		{
 			int side1 = 1;
 			int side2 = 1;
 			int side3 = -1;
+			// Sides of triangle can't be negative so we are checking with negative number.
 			char EXPECTED[30] = { "Not a triangle" };
 			char* actual;
 
@@ -29,6 +29,7 @@ namespace PolygonCheckerTests
 			int side1 = 1;
 			int side2 = 5;
 			int side3 = 0;
+			// Any side of triangle can't be zero so we are checking the function by taking zero as input.
 			char EXPECTED[30] = { "Not a triangle" };
 			char* actual;
 
@@ -37,12 +38,13 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
+		//Failed test
 		TEST_METHOD(Test3_analyzeTriangle_One_OneandOne_EquilateralTriangle)
 		{
 			int side1 = 1;
 			int side2 = 1;
-			int side3 = 1;
-			char EXPECTED[30] = { "Equilateral Triangle" };
+			int side3 = 3;
+			char EXPECTED[30] = { "Equilateral triangle" };
 			char* actual;
 
 			actual = analyzeTriangle(side1, side2, side3);
