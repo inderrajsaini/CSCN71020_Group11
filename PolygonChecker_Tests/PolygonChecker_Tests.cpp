@@ -38,12 +38,12 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
-		//Failed test
+		
 		TEST_METHOD(Test3_analyzeTriangle_One_OneandOne_EquilateralTriangle)
 		{
 			int side1 = 1;
 			int side2 = 1;
-			int side3 = 3;
+			int side3 = 1;
 			char EXPECTED[30] = { "Equilateral triangle" };
 			char* actual;
 
