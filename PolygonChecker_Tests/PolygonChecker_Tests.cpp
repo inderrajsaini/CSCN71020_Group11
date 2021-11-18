@@ -65,6 +65,31 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
+		TEST_METHOD(Test5_triangleInequalityTheorem_One_OneandFour_false)
+		{
+			int s1 = 1;
+			int s2 = 1;
+			int s3 = 4;
+			bool EXPECTED = false;
+			bool actual;
 
+			actual = triangleInequalityTheorem(s1, s2, s3);
+
+			Assert::AreEqual(EXPECTED, actual);
+
+		}
+		TEST_METHOD(Test6_triangleInequalityTheorem_One_OneandTwo_false)
+		{
+			int s1 = 1;
+			int s2 = 1;
+			int s3 = 2;
+			bool EXPECTED = false;
+			bool actual;
+
+			actual = triangleInequalityTheorem(s1, s2, s3);
+
+			Assert::AreEqual(EXPECTED, actual);
+
+		}
 	};
 }
