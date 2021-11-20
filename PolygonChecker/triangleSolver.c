@@ -27,7 +27,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 bool triangleInequalityTheorem(int s1, int s2, int s3)
 {
 	bool isTriangle = false;
-	if ((s1 + s2 > s3) && (s2 + s3 > s1) && (s1 + s3 > s2))
+	if ((s1 + s2 >= s3) && (s2 + s3 >= s1) && (s1 + s3 >= s2))
 		isTriangle = true;
 	return isTriangle;
 
