@@ -7,7 +7,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonCheckerTests
 {
-	TEST_CLASS(PolygonCheckerTests)
+	TEST_CLASS(AnalyzeTriangleTests)
 	{
 	public:
 		TEST_METHOD(Test1_analyzeTriangle_One_OneandnegativeOne_Not_a_triangle)
@@ -38,7 +38,6 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
-		
 		TEST_METHOD(Test3_analyzeTriangle_One_OneandOne_EquilateralTriangle)
 		{
 			int side1 = 1;
@@ -65,6 +64,10 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
+	};
+	TEST_CLASS(TriangleInequalityTheoremTests)
+	{
+		public:
 		TEST_METHOD(Test5_triangleInequalityTheorem_One_OneandFour_false)
 		{
 			int s1 = 1;
@@ -84,6 +87,19 @@ namespace PolygonCheckerTests
 			int s2 = 1;
 			int s3 = 2;
 			bool EXPECTED = false;
+			bool actual;
+
+			actual = triangleInequalityTheorem(s1, s2, s3);
+
+			Assert::AreEqual(EXPECTED, actual);
+
+		}
+		TEST_METHOD(Test7_triangleInequalityTheorem_Four_FiveandSix_true)
+		{
+			int s1 = 4;
+			int s2 = 5;
+			int s3 = 6;
+			bool EXPECTED = true;
 			bool actual;
 
 			actual = triangleInequalityTheorem(s1, s2, s3);
