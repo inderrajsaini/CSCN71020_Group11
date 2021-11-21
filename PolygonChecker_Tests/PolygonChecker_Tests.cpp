@@ -6,6 +6,7 @@ extern "C" double calcAngle(int adjSide1, int adjSide2, int oppSide);
 extern "C" bool analyzeFourPoints(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int* perimeter, int* area);
 extern "C" int findDistBw2Pts(int x1, int y1, int x2, int y2);
 extern "C" bool isSquare(int sqOfDiagonal, int sqOfSide);
+extern "C" void setLengthBreadthAndDiagonal(int a, int b, int c, int* length, int* breadth, int* diagonal);
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonCheckerTests
@@ -164,6 +165,24 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 		}
 	};
+	TEST_CLASS(SetLengthBreadthAndDiagonalTests)
+	{
+	public:
+		TEST_METHOD(Test1_1_setLengthBreadthAndDiagonal_Three_One_and_Two)
+		{
+			int a = 3;
+			int b = 1;
+			int c = 2;
+			int length;
+			int breadth;
+			int diagonal;
+
+			setLengthBreadthAndDiagonal(a, b, c, &length, &breadth, &diagonal);
+
+			Assert::AreEqual(diagonal, a);
+
+		}
+	};
 	TEST_CLASS(AnalyzeFourPointsTests)
 	{
 	public:
@@ -228,5 +247,44 @@ namespace PolygonCheckerTests
 
 			Assert::AreEqual(EXPECTED, actual);
 		}	
+		TEST_METHOD(Test3_1_analyzeFourPoints_0_0_0_2_3_0_2and3_0and0)
+		{
+			int x1 = 0;
+			int y1 = 0;
+			int x2 = 0;
+			int y2 = 2;
+			int x3 = 3;
+			int y3 = 0;
+			int x4 = 2;
+			int y4 = 3;
+			// These corrdinates will not form a rectangle.
+			int perimeter = 0;
+			int area = 0;
+
+			analyzeFourPoints(x1, y1, x2, y2, x3, y3, x4, y4, &perimeter, &area);
+
+			Assert::AreEqual(0, area);
+			Assert::AreEqual(0, perimeter);
+
+		}
+		TEST_METHOD(Test3_2_analyzeFourPoints_0_0_6_0_0_4_6_4_perimeterandarea_20and24)
+		{
+			int x1 = 0;
+			int y1 = 0;
+			int x2 = 6;
+			int y2 = 0;
+			int x3 = 0;
+			int y3 = 4;
+			int x4 = 6;
+			int y4 = 4;
+			int perimeter;
+			int area;
+			// These coordinates will form a rectangle.
+			analyzeFourPoints(x1, y1, x2, y2, x3, y3, x4, y4, &perimeter, &area);
+
+			Assert::AreEqual(24, area);
+			Assert::AreEqual(20, perimeter);
+
+		}
 	};
 }
