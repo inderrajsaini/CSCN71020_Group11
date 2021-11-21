@@ -6,7 +6,6 @@ extern "C" double calcAngle(int adjSide1, int adjSide2, int oppSide);
 extern "C" bool analyzeFourPoints(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int* perimeter, int* area);
 extern "C" int findDistBw2Pts(int x1, int y1, int x2, int y2);
 extern "C" bool isSquare(int sqOfDiagonal, int sqOfSide);
-extern "C" void setLengthBreadthAndDiagonal(int a, int b, int c, int* length, int* breadth, int* diagonal);
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonCheckerTests
@@ -204,22 +203,18 @@ namespace PolygonCheckerTests
 			Assert::AreEqual(EXPECTED, actual);
 
 		}
-	};
-	TEST_CLASS(SetLengthBreadthAndDiagonalTests)
-	{
-	public:
-		TEST_METHOD(Test1_1_setLengthBreadthAndDiagonal_Three_One_and_Two)
+		TEST_METHOD(Test2_1_isSquare_Three_One_TwoandFour_Ten)
 		{
-			int a = 3;
-			int b = 1;
-			int c = 2;
-			int length;
-			int breadth;
-			int diagonal;
+			int x1 = 3;
+			int y1 = 1;
+			int x2 = 2;
+			int y2 = 4;
+			int EXPECTED = 10;
+			int actual;
 
-			setLengthBreadthAndDiagonal(a, b, c, &length, &breadth, &diagonal);
+			actual = findDistBw2Pts(x1, y1, x2, y2);
 
-			Assert::AreEqual(diagonal, a);
+			Assert::AreEqual(EXPECTED, actual);
 
 		}
 	};
