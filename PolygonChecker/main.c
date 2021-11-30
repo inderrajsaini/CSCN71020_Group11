@@ -29,8 +29,8 @@ int main() {
 				printf("It is a legitimate triangle!\n\n");
 				calculateIntAnglesOfTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
-			else
-				printf("Not a legitimate triangle!\n\n");
+			/*else
+				printf("Not a legitimate triangle!\n\n");*/
 
 			break;
 		case 2:
@@ -52,6 +52,7 @@ int main() {
 			break;
 		case 0:
 			continueProgram = false;
+			printf("\nEXITING........................\n");
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
@@ -76,7 +77,7 @@ int printShapeMenu() {
 
 	int shapeChoice;
 
-	printf_s("Enter number: ");
+	printf_s("\nEnter number: ");
 	scanf_s("%1o", &shapeChoice);
 
 	return shapeChoice;
